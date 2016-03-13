@@ -11,6 +11,6 @@ public class HelloEndpoint {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String getHello(){
-        return "Endpoint Hello World";
+        return "Endpoint Hello World!!";
     }
 }

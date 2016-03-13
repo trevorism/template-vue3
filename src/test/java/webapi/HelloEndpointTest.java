@@ -8,6 +8,6 @@ public class HelloEndpointTest {
     @Test
     public void testGetHello(){
         HelloEndpoint endpoint = new HelloEndpoint();
-        assertEquals("Endpoint Hello World", endpoint.getHello());
+        assertEquals("Endpoint Hello World!!", endpoint.getHello());
     }
 }
