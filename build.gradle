@@ -1,0 +1,16 @@
+
+apply plugin: 'java'
+apply plugin: 'war'
+apply from: 'https://raw.github.com/akhikhl/gretty/master/pluginScripts/gretty.plugin'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	compile 'org.glassfish.jersey.containers:jersey-container-servlet:2.15'
+	compile 'org.glassfish.jersey.media:jersey-media-json-jackson:2.15'
+	compile 'com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:2.5.0'
+	testCompile 'junit:junit:4.12'
+}
+
