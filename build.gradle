@@ -3,7 +3,7 @@ buildscript {
 	dependencies { classpath 'com.google.appengine:gradle-appengine-plugin:1.9.30' }
 }
 
-apply plugin: 'java'
+apply plugin: 'groovy'
 apply plugin: 'war'
 apply from: 'https://raw.github.com/akhikhl/gretty/master/pluginScripts/gretty.plugin'
 
@@ -20,7 +20,9 @@ repositories {
 }
 
 dependencies {
-	compile 'org.glassfish.jersey.containers:jersey-container-servlet:2.15'
+    compile 'org.codehaus.groovy:groovy-all:2.4.6'
+
+    compile 'org.glassfish.jersey.containers:jersey-container-servlet:2.15'
 	compile 'org.glassfish.jersey.media:jersey-media-json-jackson:2.15'
 	compile 'com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:2.5.0'
 	testCompile 'junit:junit:4.12'
