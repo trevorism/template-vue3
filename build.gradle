@@ -1,7 +1,19 @@
+buildscript {
+	repositories { mavenCentral() }
+	dependencies { classpath 'com.google.appengine:gradle-appengine-plugin:1.9.30' }
+}
 
 apply plugin: 'java'
 apply plugin: 'war'
 apply from: 'https://raw.github.com/akhikhl/gretty/master/pluginScripts/gretty.plugin'
+
+apply plugin: 'appengine'
+apply plugin: 'jacoco'
+
+version = "1"
+group = "com.trevorism.hello"
+targetCompatibility = "1.7"
+sourceCompatibility = "1.7"
 
 repositories {
 	mavenCentral()
@@ -12,5 +24,29 @@ dependencies {
 	compile 'org.glassfish.jersey.media:jersey-media-json-jackson:2.15'
 	compile 'com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:2.5.0'
 	testCompile 'junit:junit:4.12'
+    appengineSdk 'com.google.appengine:appengine-java-sdk:1.9.30'
 }
 
+appengine {
+    httpPort = 8085
+    downloadSdk = false
+    appcfg {
+        email = 'trevorvbrooks@gmail.com'
+        passIn = true
+        oauth2 = true
+
+        logs {
+            severity = 1
+            outputFile = file('app-engine-log.txt')
+        }
+
+        app {
+            id = 'trevorism-gcloud'
+            version = version
+        }
+    }
+}
+
+check{
+    dependsOn('jacocoTestReport')
+}
