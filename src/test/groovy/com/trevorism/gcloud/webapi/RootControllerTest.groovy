@@ -1,5 +1,5 @@
 import org.junit.Test
-import webapi.RootController
+import com.trevorism.gcloud.webapi.RootController
 
 class RootControllerTest {
 
