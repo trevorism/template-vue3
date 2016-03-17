@@ -41,6 +41,7 @@ dependencies {
 appengine {
     httpPort = 8085
     downloadSdk = false
+
     appcfg {
         email = 'trevorvbrooks@gmail.com'
         passIn = true
