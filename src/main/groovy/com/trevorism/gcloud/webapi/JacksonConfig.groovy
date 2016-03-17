@@ -5,6 +5,8 @@ import com.fasterxml.jackson.databind.SerializationFeature
 
 import javax.ws.rs.ext.ContextResolver
 import javax.ws.rs.ext.Provider
+import java.text.DateFormat
+import java.text.SimpleDateFormat
 
 /**
  * @author tbrooks
@@ -15,7 +17,10 @@ class JacksonConfig implements ContextResolver<ObjectMapper> {
     private final ObjectMapper objectMapper
 
     public JacksonConfig() {
-        objectMapper = new ObjectMapper().configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
+        objectMapper = new ObjectMapper()
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
+        objectMapper.setDateFormat(dateFormat)
+        objectMapper.registerModule(new EntityModule())
     }
 
     @Override
