@@ -9,7 +9,6 @@ import com.google.appengine.api.datastore.Key
 import com.google.appengine.api.datastore.KeyFactory
 import com.google.appengine.api.datastore.PreparedQuery
 import com.google.appengine.api.datastore.Query
-import org.json.JSONObject
 
 /**
  * @author tbrooks
@@ -25,7 +24,7 @@ class CrudDatastoreDAO implements DatastoreDAO {
     }
 
     @Override
-    Entity create(JSONObject data) {
+    Entity create(Map<String, Object> data) {
         validateId(data)
 
         Entity entity = setEntityFromJSONObject(kind, data)
@@ -33,15 +32,15 @@ class CrudDatastoreDAO implements DatastoreDAO {
         return createReturnEntity(key, entity)
     }
 
-    private static void validateId(JSONObject jsonObject) {
-        if(!jsonObject.has("id"))
+    private static void validateId(Map<String, Object> jsonObject) {
+        if(!jsonObject["id"])
             return;
 
-        def id = jsonObject.get("id")
+        def id = jsonObject["id"]
         try{
             Long.parseLong(id.toString())
         }catch(Exception e){
-            throw new RuntimeException("Invalid ID. ID must be a number: ${id}")
+            throw new RuntimeException("Invalid ID. ID must be a number: ${id}", e)
         }
     }
 
@@ -63,7 +62,7 @@ class CrudDatastoreDAO implements DatastoreDAO {
     }
 
     @Override
-    Entity update(long id, JSONObject data) {
+    Entity update(long id, Map<String, Object> data) {
         Entity entityExists = read(id)
 
         if(!entityExists)
@@ -84,10 +83,10 @@ class CrudDatastoreDAO implements DatastoreDAO {
         return entity
     }
 
-    private Entity setEntityFromJSONObject(String kind, JSONObject data) {
+    private Entity setEntityFromJSONObject(String kind, Map<String, Object> data) {
         Entity entity = createEmptyEntity(kind, data)
-        data.keys().each { String key ->
-            entity.setIndexedProperty(key, data.get(key))
+        data.each { k,v ->
+            entity.setIndexedProperty(k, v)
         }
         entity
     }
@@ -98,7 +97,7 @@ class CrudDatastoreDAO implements DatastoreDAO {
         return returnEntity
     }
 
-    private static Entity createEmptyEntity(String kind, JSONObject data) {
+    private static Entity createEmptyEntity(String kind, Map<String, Object> data) {
         long id = getIdFromObject(data)
 
         if (id != 0)
@@ -108,10 +107,10 @@ class CrudDatastoreDAO implements DatastoreDAO {
 
     }
 
-    private static long getIdFromObject(JSONObject jsonObject) {
+    private static long getIdFromObject(Map<String, Object> jsonObject) {
         try{
-            if(jsonObject.has("id"))
-                return Long.valueOf(jsonObject.get("id"))
+            if(jsonObject.containsKey("id"))
+                return Long.valueOf(jsonObject.get("id").toString())
             return 0
         }catch (Exception e){
             return 0

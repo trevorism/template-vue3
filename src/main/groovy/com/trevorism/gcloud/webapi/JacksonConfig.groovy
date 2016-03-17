@@ -1,5 +1,6 @@
 package com.trevorism.gcloud.webapi
 
+import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.SerializationFeature
 
@@ -17,7 +18,7 @@ class JacksonConfig implements ContextResolver<ObjectMapper> {
     private final ObjectMapper objectMapper
 
     public JacksonConfig() {
-        objectMapper = new ObjectMapper()
+        objectMapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
         objectMapper.setDateFormat(dateFormat)
         objectMapper.registerModule(new EntityModule())

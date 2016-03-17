@@ -25,12 +25,12 @@ class CrudDatastoreDAOTest {
         helper.setUp()
         CrudDatastoreDAO dao = new CrudDatastoreDAO(kind)
 
-        JSONObject jsonObject = new JSONObject()
+        def jsonObject = [:]
         jsonObject.put("name", "sample1")
         jsonObject.put("id", id1)
         dao.create(jsonObject)
 
-        JSONObject jsonObject2 = new JSONObject()
+        def jsonObject2 = [:]
         jsonObject2.put("name", "sample2")
         jsonObject2.put("id", id2)
         dao.create(jsonObject2)
@@ -66,7 +66,7 @@ class CrudDatastoreDAOTest {
     void testUpdate(){
         CrudDatastoreDAO dao = new CrudDatastoreDAO(kind)
 
-        JSONObject jsonObject = new JSONObject()
+        def jsonObject = [:]
         jsonObject.put("name", "sample77")
 
         def result = dao.update(id1, jsonObject)
@@ -80,7 +80,7 @@ class CrudDatastoreDAOTest {
     void testUpdateWithId(){
         CrudDatastoreDAO dao = new CrudDatastoreDAO(kind)
 
-        JSONObject jsonObject = new JSONObject()
+        def jsonObject = [:]
         jsonObject.put("name", "sample22")
         jsonObject.put("id", "invalid1")
 

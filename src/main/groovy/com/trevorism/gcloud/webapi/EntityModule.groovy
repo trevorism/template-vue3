@@ -29,5 +29,12 @@ class EntityModule extends SimpleModule{
             }
             gen.writeEndObject()
         }
+
+        @Override
+        public Class<Entity> handledType()
+        {
+            return Entity.class;
+        }
+
     }
 }

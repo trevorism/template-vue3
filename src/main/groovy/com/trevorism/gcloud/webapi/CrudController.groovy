@@ -22,10 +22,8 @@ import javax.ws.rs.PathParam
 import javax.ws.rs.Produces
 import javax.ws.rs.core.MediaType
 
-
+@Path("")
 class CrudController {
-
-    private final DatastoreService datastore = DatastoreServiceFactory.getDatastoreService()
 
     @GET
     @Path("{kind}/{id}")
@@ -50,7 +48,7 @@ class CrudController {
     @Path("{kind}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    Entity create(@PathParam("kind") String kind, JSONObject data){
+    Entity create(@PathParam("kind") String kind, def data){
         DatastoreDAO dao = new CrudDatastoreDAO(kind)
         def entity = dao.create(data)
         return entity

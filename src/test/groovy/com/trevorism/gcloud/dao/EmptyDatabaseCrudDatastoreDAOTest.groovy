@@ -47,7 +47,7 @@ class EmptyDatabaseCrudDatastoreDAOTest {
     public void testUpdateFromEmptyDB()
     {
         CrudDatastoreDAO dao = new CrudDatastoreDAO(kind)
-        JSONObject jsonObject = new JSONObject(["name", "newName"])
+        def jsonObject = ["name": "newName"]
         def result = dao.update(1, jsonObject)
         !result
     }
@@ -63,7 +63,7 @@ class EmptyDatabaseCrudDatastoreDAOTest {
     @Test
     public void testCreateSimple(){
         CrudDatastoreDAO dao = new CrudDatastoreDAO(kind)
-        JSONObject jsonObject = new JSONObject()
+        def jsonObject = [:]
         jsonObject.put("name", "newName")
 
         Entity entity = dao.create(jsonObject)
@@ -83,7 +83,7 @@ class EmptyDatabaseCrudDatastoreDAOTest {
         long id = 8;
         CrudDatastoreDAO dao = new CrudDatastoreDAO(kind)
 
-        JSONObject jsonObject = new JSONObject()
+        def jsonObject = [:]
         jsonObject.put("name", "sample")
         jsonObject.put("id", id)
 
