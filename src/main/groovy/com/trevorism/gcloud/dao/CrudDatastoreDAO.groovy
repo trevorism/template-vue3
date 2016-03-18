@@ -86,7 +86,7 @@ class CrudDatastoreDAO implements DatastoreDAO {
     private Entity setEntityFromJSONObject(String kind, Map<String, Object> data) {
         Entity entity = createEmptyEntity(kind, data)
         data.each { k,v ->
-            entity.setIndexedProperty(k, v)
+            entity.setIndexedProperty(k.toLowerCase(), v)
         }
         entity
     }

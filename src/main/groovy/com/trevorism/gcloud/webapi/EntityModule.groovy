@@ -22,16 +22,13 @@ class EntityModule extends SimpleModule{
         @Override
         void serialize(Entity value, JsonGenerator gen, SerializerProvider serializers) throws IOException, JsonProcessingException {
             gen.writeStartObject()
-            boolean hasId = false
+            if(!value.properties.containsKey("id"))
+                gen.writeNumberField("id", value.key.id)
             value.properties.each { k,v ->
-                if(k == "id")
-                    hasId = true
                 gen.writeFieldName(k)
                 gen.writeObject(v)
 
             }
-            if(!hasId)
-                gen.writeNumberField("id", value.key.id)
             gen.writeEndObject()
         }
 
