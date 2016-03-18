@@ -21,8 +21,11 @@ class RootController {
         Query query = new Query(Entities.KIND_METADATA_KIND)
         def kindEntities = datastore.prepare(query).asIterable()
 
-        def endpoints = kindEntities.collect {
-            it.key.name
+        def endpoints = []
+        kindEntities.each {
+            String endpoint = it.key.name
+            if(! endpoint.startsWith("__"))
+                endpoints << endpoint
         }
         return endpoints
     }
