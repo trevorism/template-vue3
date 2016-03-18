@@ -1,10 +1,7 @@
 package com.trevorism.gcloud.dao
 
-import com.google.appengine.api.datastore.Entity
 import com.google.appengine.tools.development.testing.LocalDatastoreServiceTestConfig
 import com.google.appengine.tools.development.testing.LocalServiceTestHelper
-import com.trevorism.gcloud.dao.CrudDatastoreDAO
-import org.json.JSONObject
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -43,14 +40,14 @@ class CrudDatastoreDAOTest {
     }
 
     @Test
-    void testReadAll(){
+    void testReadAll() {
         CrudDatastoreDAO dao = new CrudDatastoreDAO(kind)
         def results = dao.readAll()
         assert results.size() == 2
     }
 
     @Test
-    void testRead(){
+    void testRead() {
         CrudDatastoreDAO dao = new CrudDatastoreDAO(kind)
         def result = dao.read(id1)
         assert result.key.id == id1
@@ -63,7 +60,7 @@ class CrudDatastoreDAOTest {
     }
 
     @Test
-    void testUpdate(){
+    void testUpdate() {
         CrudDatastoreDAO dao = new CrudDatastoreDAO(kind)
 
         def jsonObject = [:]
@@ -77,7 +74,7 @@ class CrudDatastoreDAOTest {
     }
 
     @Test
-    void testUpdateWithId(){
+    void testUpdateWithId() {
         CrudDatastoreDAO dao = new CrudDatastoreDAO(kind)
 
         def jsonObject = [:]
@@ -92,7 +89,7 @@ class CrudDatastoreDAOTest {
     }
 
     @Test
-    void testDelete(){
+    void testDelete() {
         CrudDatastoreDAO dao = new CrudDatastoreDAO(kind)
 
         dao.delete(id1)
