@@ -22,7 +22,7 @@ class RootController {
         def kindEntities = datastore.prepare(query).asIterable()
 
         def endpoints = kindEntities.collect {
-            println it.key.name
+            it.key.name
         }
         return endpoints
     }
