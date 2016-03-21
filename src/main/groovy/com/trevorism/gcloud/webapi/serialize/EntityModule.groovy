@@ -1,4 +1,4 @@
-package com.trevorism.gcloud.webapi
+package com.trevorism.gcloud.webapi.serialize
 
 import com.fasterxml.jackson.core.JsonGenerator
 import com.fasterxml.jackson.core.JsonProcessingException
@@ -6,7 +6,6 @@ import com.fasterxml.jackson.databind.JsonSerializer
 import com.fasterxml.jackson.databind.SerializerProvider
 import com.fasterxml.jackson.databind.module.SimpleModule
 import com.google.appengine.api.datastore.Entity
-import org.json.JSONObject
 
 /**
  * @author tbrooks

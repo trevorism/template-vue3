@@ -10,7 +10,7 @@ apply plugin: 'appengine'
 apply plugin: 'jacoco'
 
 version = "1"
-group = "com.trevorism.hello"
+group = "com.trevorism.gcloud"
 targetCompatibility = "1.7"
 sourceCompatibility = "1.7"
 
@@ -18,22 +18,23 @@ repositories {
 	mavenCentral()
 }
 
+def appengineVersion = "1.9.34"
+
 dependencies {
     compile 'org.codehaus.groovy:groovy-all:2.4.6'
-    compile 'com.google.gcloud:gcloud-java:0.1.5'
-    compile 'com.google.appengine:appengine-api-1.0-sdk:1.9.32'
+    compile "com.google.appengine:appengine-api-1.0-sdk:$appengineVersion"
 
-    compile 'org.glassfish.jersey.containers:jersey-container-servlet:2.15'
-	compile 'org.glassfish.jersey.media:jersey-media-json-jackson:2.15'
-	compile 'com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:2.5.0'
+    compile 'org.glassfish.jersey.containers:jersey-container-servlet:2.22.2'
+	compile 'org.glassfish.jersey.media:jersey-media-json-jackson:2.22.2'
+	compile 'com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:2.7.3'
 	testCompile 'junit:junit:4.12'
 
-    testCompile 'com.google.appengine:appengine-testing:1.9.32'
-    testCompile 'com.google.appengine:appengine-api-stubs:1.9.32'
-    testCompile 'com.google.appengine:appengine-api-labs:1.9.32'
-    testCompile 'com.google.appengine:appengine-tools-sdk:1.9.32'
+    testCompile "com.google.appengine:appengine-testing:$appengineVersion"
+    testCompile "com.google.appengine:appengine-api-stubs:$appengineVersion"
+    testCompile "com.google.appengine:appengine-api-labs:$appengineVersion"
+    testCompile "com.google.appengine:appengine-tools-sdk:$appengineVersion"
 
-    appengineSdk 'com.google.appengine:appengine-java-sdk:1.9.32'
+    appengineSdk "com.google.appengine:appengine-java-sdk:$appengineVersion"
 
 
 }
@@ -46,6 +47,7 @@ appengine {
         email = 'trevorvbrooks@gmail.com'
         passIn = true
         oauth2 = true
+        //jvmFlags = ['-Xdebug', '-Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8000']
 
         logs {
             severity = 1

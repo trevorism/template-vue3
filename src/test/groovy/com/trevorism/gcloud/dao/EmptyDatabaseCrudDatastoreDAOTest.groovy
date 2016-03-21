@@ -3,12 +3,10 @@ package com.trevorism.gcloud.dao
 import com.google.appengine.api.datastore.Entity
 import com.google.appengine.tools.development.testing.LocalDatastoreServiceTestConfig;
 import com.google.appengine.tools.development.testing.LocalServiceTestHelper
-import com.trevorism.gcloud.dao.CrudDatastoreDAO
-import org.json.JSONObject
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
-import org.junit.rules.ExpectedException
+
 
 
 /**
@@ -99,7 +97,7 @@ class EmptyDatabaseCrudDatastoreDAOTest {
     public void testCreateWithInvalidId(){
         CrudDatastoreDAO dao = new CrudDatastoreDAO(kind)
 
-        JSONObject jsonObject = new JSONObject()
+        def jsonObject = [:]
         jsonObject.put("name", "sample")
         jsonObject.put("id", "invalid")
 

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import com.google.appengine.api.datastore.Entity
 import com.google.appengine.tools.development.testing.LocalDatastoreServiceTestConfig
 import com.google.appengine.tools.development.testing.LocalServiceTestHelper
+import com.trevorism.gcloud.webapi.serialize.JacksonConfig
 import org.junit.After
 import org.junit.Before
 import org.junit.Test

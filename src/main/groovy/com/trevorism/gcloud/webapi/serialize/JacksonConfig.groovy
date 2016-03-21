@@ -1,8 +1,7 @@
-package com.trevorism.gcloud.webapi
+package com.trevorism.gcloud.webapi.serialize
 
 import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.databind.ObjectMapper
-import com.fasterxml.jackson.databind.SerializationFeature
 
 import javax.ws.rs.ext.ContextResolver
 import javax.ws.rs.ext.Provider

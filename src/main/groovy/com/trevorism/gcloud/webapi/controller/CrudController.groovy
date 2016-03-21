@@ -1,8 +1,9 @@
-package com.trevorism.gcloud.webapi
+package com.trevorism.gcloud.webapi.controller
 
 import com.google.appengine.api.datastore.Entity
 import com.trevorism.gcloud.dao.CrudDatastoreDAO
 import com.trevorism.gcloud.dao.DatastoreDAO
+import com.trevorism.gcloud.webapi.filter.Created
 
 import javax.ws.rs.Consumes
 import javax.ws.rs.DELETE
@@ -40,6 +41,7 @@ class CrudController {
     @Path("{kind}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
+    @Created
     Entity create(@PathParam("kind") String kind, Map<String, Object> data){
         DatastoreDAO dao = new CrudDatastoreDAO(kind)
         def entity = dao.create(data)
