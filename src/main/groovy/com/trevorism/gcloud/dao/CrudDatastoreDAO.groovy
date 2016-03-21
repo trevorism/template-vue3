@@ -19,7 +19,7 @@ class CrudDatastoreDAO implements DatastoreDAO {
     private final String kind
 
     CrudDatastoreDAO(String kind){
-        this.kind = kind
+        this.kind = kind.toLowerCase()
         datastore = DatastoreServiceFactory.getDatastoreService()
     }
 
