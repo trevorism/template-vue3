@@ -61,7 +61,7 @@ class CrudDatastoreDAO implements DatastoreDAO {
             return null
 
         data.put("id", id)
-        Entity entity = setEntityFromJSONObject(kind, data)
+        Entity entity = setEntityProperties(entityExists, data)
         Key key = datastore.put(entity)
         return createReturnEntity(key, entity)
     }
@@ -77,10 +77,14 @@ class CrudDatastoreDAO implements DatastoreDAO {
 
     private Entity setEntityFromJSONObject(String kind, Map<String, Object> data) {
         Entity entity = createEmptyEntity(kind, data)
-        data.each { k,v ->
+        setEntityProperties(entity, data)
+    }
+
+    private Entity setEntityProperties(Entity entity, Map<String, Object> data) {
+        data.each { k, v ->
             entity.setIndexedProperty(k.toLowerCase(), v)
         }
-        entity
+        return entity
     }
 
     private static Entity createReturnEntity(Key key, Entity entity) {
