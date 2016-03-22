@@ -1,17 +1,14 @@
 package com.trevorism.gcloud.dao
 
-import com.google.appengine.tools.development.testing.LocalDatastoreServiceTestConfig
-import com.google.appengine.tools.development.testing.LocalServiceTestHelper
-import org.junit.After
+import com.trevorism.gcloud.LocalAppEngineTestBase
 import org.junit.Before
 import org.junit.Test
 
 /**
  * @author tbrooks
  */
-class CrudDatastoreDAOTest {
+class CrudDatastoreDAOTest extends LocalAppEngineTestBase{
 
-    private final LocalServiceTestHelper helper = new LocalServiceTestHelper(new LocalDatastoreServiceTestConfig());
     private final String kind = "TestWithData"
 
     private final long id1 = 1
@@ -19,7 +16,7 @@ class CrudDatastoreDAOTest {
 
     @Before
     void setUp() {
-        helper.setUp()
+        super.setUp()
         CrudDatastoreDAO dao = new CrudDatastoreDAO(kind)
 
         def jsonObject = [:]
@@ -32,11 +29,6 @@ class CrudDatastoreDAOTest {
         jsonObject2.put("id", id2)
         dao.create(jsonObject2)
 
-    }
-
-    @After
-    void tearDown() {
-        helper.tearDown()
     }
 
     @Test

@@ -1,31 +1,15 @@
 package com.trevorism.gcloud.dao
 
 import com.google.appengine.api.datastore.Entity
-import com.google.appengine.tools.development.testing.LocalDatastoreServiceTestConfig;
-import com.google.appengine.tools.development.testing.LocalServiceTestHelper
-import org.junit.After
-import org.junit.Before
+import com.trevorism.gcloud.LocalAppEngineTestBase
 import org.junit.Test
-
-
 
 /**
  * @author tbrooks
  */
-class EmptyDatabaseCrudDatastoreDAOTest {
+class EmptyDatabaseCrudDatastoreDAOTest extends LocalAppEngineTestBase {
 
-    private final LocalServiceTestHelper helper = new LocalServiceTestHelper(new LocalDatastoreServiceTestConfig());
     private final String kind = "TestSample"
-
-    @Before
-    public void setUp() {
-        helper.setUp()
-    }
-
-    @After
-    public void tearDown() {
-        helper.tearDown()
-    }
 
     @Test
     public void testReadAllFromEmptyDB() {
@@ -42,8 +26,7 @@ class EmptyDatabaseCrudDatastoreDAOTest {
     }
 
     @Test
-    public void testUpdateFromEmptyDB()
-    {
+    public void testUpdateFromEmptyDB() {
         CrudDatastoreDAO dao = new CrudDatastoreDAO(kind)
         def jsonObject = ["name": "newName"]
         def result = dao.update(1, jsonObject)
@@ -51,15 +34,14 @@ class EmptyDatabaseCrudDatastoreDAOTest {
     }
 
     @Test
-    public void testDeleteFromEmptyDB()
-    {
+    public void testDeleteFromEmptyDB() {
         CrudDatastoreDAO dao = new CrudDatastoreDAO(kind)
         def result = dao.delete(1)
         !result
     }
 
     @Test
-    public void testCreateSimple(){
+    public void testCreateSimple() {
         CrudDatastoreDAO dao = new CrudDatastoreDAO(kind)
         def jsonObject = [:]
         jsonObject.put("name", "newName")
@@ -77,7 +59,7 @@ class EmptyDatabaseCrudDatastoreDAOTest {
     }
 
     @Test
-    public void testCreateWithId(){
+    public void testCreateWithId() {
         long id = 8;
         CrudDatastoreDAO dao = new CrudDatastoreDAO(kind)
 
@@ -93,8 +75,8 @@ class EmptyDatabaseCrudDatastoreDAOTest {
         assert entity.getProperty("name") == readEntity.getProperty("name")
     }
 
-    @Test(expected=RuntimeException.class)
-    public void testCreateWithInvalidId(){
+    @Test(expected = RuntimeException.class)
+    public void testCreateWithInvalidId() {
         CrudDatastoreDAO dao = new CrudDatastoreDAO(kind)
 
         def jsonObject = [:]
