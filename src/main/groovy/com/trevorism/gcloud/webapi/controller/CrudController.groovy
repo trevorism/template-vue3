@@ -7,6 +7,7 @@ import com.trevorism.gcloud.webapi.filter.Created
 
 import javax.ws.rs.*
 import javax.ws.rs.core.MediaType
+import javax.ws.rs.core.Response
 
 @Path("")
 class CrudController {
@@ -17,6 +18,9 @@ class CrudController {
     Entity read(@PathParam("kind") String kind, @PathParam("id") long id){
         DatastoreDAO dao = new CrudDatastoreDAO(kind)
         def entity = dao.read(id)
+        if(!entity)
+            throw new NotFoundException()
+
         return entity
     }
 
@@ -49,6 +53,8 @@ class CrudController {
     Entity update(@PathParam("kind") String kind, @PathParam("id") long id, Map<String, Object> data){
         DatastoreDAO dao = new CrudDatastoreDAO(kind)
         def entity = dao.update(id, data)
+        if(!entity)
+            throw new NotFoundException()
         return entity
 
     }
@@ -59,6 +65,8 @@ class CrudController {
     Entity delete(@PathParam("kind") String kind, @PathParam("id") long id){
         DatastoreDAO dao = new CrudDatastoreDAO(kind)
         def entity = dao.delete(id)
+        if(!entity)
+            throw new NotFoundException()
         return entity
     }
 

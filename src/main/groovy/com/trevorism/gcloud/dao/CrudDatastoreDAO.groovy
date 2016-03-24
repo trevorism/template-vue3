@@ -26,7 +26,7 @@ class CrudDatastoreDAO implements DatastoreDAO {
 
     private static void validateId(Map<String, Object> jsonObject) {
         if(!jsonObject["id"])
-            return;
+            return
 
         def id = jsonObject["id"]
         try{
@@ -70,8 +70,9 @@ class CrudDatastoreDAO implements DatastoreDAO {
     Entity delete(long id) {
         Key key = KeyFactory.createKey(kind, id)
         Entity entity = read(id)
-        if(entity)
-            datastore.delete(key)
+        if(!entity)
+            return null;
+        datastore.delete(key)
         return entity
     }
 
