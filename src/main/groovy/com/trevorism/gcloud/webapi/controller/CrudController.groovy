@@ -1,6 +1,10 @@
 package com.trevorism.gcloud.webapi.controller
 
+import com.google.appengine.api.datastore.DatastoreService
+import com.google.appengine.api.datastore.DatastoreServiceFactory
+import com.google.appengine.api.datastore.Entities
 import com.google.appengine.api.datastore.Entity
+import com.google.appengine.api.datastore.Query
 import com.trevorism.gcloud.dao.CrudDatastoreDAO
 import com.trevorism.gcloud.dao.DatastoreDAO
 import com.trevorism.gcloud.webapi.filter.Created
@@ -9,8 +13,26 @@ import javax.ws.rs.*
 import javax.ws.rs.core.MediaType
 import javax.ws.rs.core.Response
 
-@Path("")
+@Path("api")
 class CrudController {
+
+    private final DatastoreService datastore = DatastoreServiceFactory.getDatastoreService()
+
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<String> getEndpoints(){
+        Query query = new Query(Entities.KIND_METADATA_KIND)
+        def kindEntities = datastore.prepare(query).asIterable()
+
+        def endpoints = []
+        kindEntities.each {
+            String endpoint = it.key.name
+            if(!endpoint.startsWith("__"))
+                endpoints << endpoint
+        }
+        return endpoints
+    }
 
     @GET
     @Path("{kind}/{id}")

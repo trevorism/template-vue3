@@ -12,6 +12,11 @@ class CrudControllerTest extends LocalAppEngineTestBase {
     private static final String KIND = "Test"
 
     @Test
+    void testRootController(){
+        assert !(new CrudController().endpoints)
+    }
+
+    @Test
     void testCreateReadDelete(){
         CrudController crudController = new CrudController()
         Date now = new Date()
