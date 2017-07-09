@@ -33,7 +33,6 @@ dependencies {
     testCompile "com.google.appengine:appengine-api-stubs:$appengineVersion"
     testCompile "com.google.appengine:appengine-api-labs:$appengineVersion"
     testCompile "com.google.appengine:appengine-tools-sdk:$appengineVersion"
-
 }
 
 appengine {
