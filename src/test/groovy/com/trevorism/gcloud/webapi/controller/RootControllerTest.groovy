@@ -10,6 +10,7 @@ class RootControllerTest extends LocalAppEngineTestBase{
 
     @Test
     void testRootController(){
-        assert !(new RootController().endpoints)
+        RootController rootController = new RootController()
+        assert rootController.endpoints.contains("ping")
     }
 }
