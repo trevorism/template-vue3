@@ -9,7 +9,7 @@ apply plugin: 'war'
 apply plugin: 'com.google.cloud.tools.appengine'
 apply plugin: 'jacoco'
 
-version = "2"
+version = "3"
 group = "com.trevorism.gcloud"
 
 repositories {
@@ -35,7 +35,7 @@ dependencies {
 
 appengine {
     deploy {
-        version = 'v2'
+        version = 'v3'
         project = "trevorism-gcloud"
         stopPreviousVersion = true
     }
