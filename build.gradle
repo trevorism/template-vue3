@@ -11,8 +11,6 @@ apply plugin: 'jacoco'
 
 version = "2"
 group = "com.trevorism.gcloud"
-targetCompatibility = "1.7"
-sourceCompatibility = "1.7"
 
 repositories {
 	mavenCentral()
