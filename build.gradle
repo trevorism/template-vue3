@@ -40,6 +40,7 @@ appengine {
     deploy {
         version = 'v2'
         project = "trevorism-gcloud"
+        stopPreviousVersion = true
     }
 }
 
