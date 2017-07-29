@@ -9,9 +9,6 @@ apply plugin: 'war'
 apply plugin: 'com.google.cloud.tools.appengine'
 apply plugin: 'jacoco'
 
-version = "3"
-group = "com.trevorism.gcloud"
-
 repositories {
 	mavenCentral()
 }
@@ -31,14 +28,6 @@ dependencies {
     testCompile "com.google.appengine:appengine-api-stubs:$appengineVersion"
     testCompile "com.google.appengine:appengine-api-labs:$appengineVersion"
     testCompile "com.google.appengine:appengine-tools-sdk:$appengineVersion"
-}
-
-appengine {
-    deploy {
-        version = 'v3'
-        project = "trevorism-gcloud"
-        stopPreviousVersion = true
-    }
 }
 
 check{

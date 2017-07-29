@@ -12,26 +12,21 @@ class RootController {
     @Path("ping")
     @Produces(MediaType.APPLICATION_JSON)
     String ping(){
-        return "pong"
+        "pong"
     }
 
     @GET
     @Path("")
-    @Produces(MediaType.APPLICATION_JSON)
-    List<String> getEndpoints(){
-        return ["ping", "help", "api"]
+    String getEndpoints(){
+        '<a href="/ping">/ping</a> </br> <a href="/help">/help</a>'
     }
 
     @GET
     @Path("help")
     String help(){
         return """
-GET /api -- List of all types<br/>
-GET /api/{type} -- List of all object within a type<br/>
-POST /api/{type} -- Create a new object of this type. Post the object in json format. <br/>
-GET /api/{type}/{id} -- Get a type by id<br/>
-PUT /api/{type}/{id} -- Update a type with the given id.<br/>
-DELETE /api/{type}/{id} -- Delete an object with this id<br/>
+<h3>API documentation for gcloud-service </h3><br/><br/>
+HTTP GET <a href="/ping">/ping</a> -- Returns "pong" if the application is working
 """
     }
 }

@@ -1,4 +1,19 @@
 # gcloud
-CRUD operations on any object using google datastore. These objects are not type safe at this time.
+Template for google app engine services
 
-* gradle appengineRun -- Starts up a local instance
+##Prerequisites
+* Java 8
+* Gradle
+* Gcloud SDK
+
+#Steps for creating a new GAE service
+
+* Identify the name of the gae project `$PROJECT` 
+* Identify the name of the service `$SERVICE`
+* Check out this project
+* Replace gcloud-project with `$SERVICE` in
+    * RootController.groovy
+    * appengine-web.xml
+    * settings.gradle
+* Update appengine-web.xml `<application>$PROJECT</application>`
+* Update this README.md
