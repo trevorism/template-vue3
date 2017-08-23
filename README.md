@@ -17,3 +17,8 @@ Template for google app engine services
     * settings.gradle
 * Update appengine-web.xml `<application>$PROJECT</application>`
 * Update this README.md
+
+
+The prior steps are encoded in a powershell script
+
+`New-WebApi -projectName $PROJECT -serviceName $SERVICE`
