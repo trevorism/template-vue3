@@ -33,7 +33,7 @@ apply plugin: "com.trevorism.gradle.gae.deploy"
 repositories {
     mavenCentral()
     flatDir {
-        dirs 'C:\\dev\\http-utils\\build\\libs'
+        dirs ('C:\\dev\\http-utils\\build\\libs', 'C:\\dev\\secure-utils\\build\\libs')
     }
 }
 
@@ -46,6 +46,7 @@ dependencies {
     compile 'org.glassfish.jersey.containers:jersey-container-servlet:2.22.2'
 	compile 'org.glassfish.jersey.media:jersey-media-json-jackson:2.22.2'
 	compile 'com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:2.7.3'
+    compile ':secure-utils:1.0.0'
 
     acceptanceCompile 'info.cukes:cucumber-groovy:1.2.5'
     acceptanceCompile ':http-utils:1.0.0'
