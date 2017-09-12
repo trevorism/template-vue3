@@ -66,6 +66,7 @@ acceptance{
 
 appengine{
     deploy {
+        project = ""
         stopPreviousVersion = true
         promote = true
     }
