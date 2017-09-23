@@ -10,7 +10,7 @@ class RootControllerTest {
     @Test
     void testRootControllerEndpoints(){
         RootController rootController = new RootController()
-        assert rootController.endpoints.contains("ping")
+        assert rootController.displayHelpLink().contains("/help")
     }
 
     @Test
