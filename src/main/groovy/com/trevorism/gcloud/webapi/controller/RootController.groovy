@@ -18,7 +18,7 @@ import javax.ws.rs.core.Response
                 description = "API",
                 version = "1",
                 title = "API",
-                contact = @Contact(name = "Trevor Brooks", url = "http://www.trevorism.com")
+                contact = @Contact(name = "Trevor Brooks", url = "https://www.trevorism.com")
         )
 )
 @Path("/")
