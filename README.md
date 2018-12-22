@@ -34,3 +34,12 @@ How to create in gcloud:
 
 In the portal
 * Set up a service account through API Manager
+
+## Google cloud project setup
+* Go to the Gcloud console console.cloud.google.come
+* Create a new project
+* Configure the subdomain and update DNS
+* Update New-WebApi POSH script to generate a project
+* Update registry project to take into account new project
+* Create project in github
+* Start jenkins using click.trevorism.com
