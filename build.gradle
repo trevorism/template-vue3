@@ -35,7 +35,7 @@ repositories {
     }
 }
 
-def appengineVersion = "1.9.64"
+def appengineVersion = "1.9.71"
 def jerseyVersion = "2.27"
 
 dependencies {
