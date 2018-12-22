@@ -39,7 +39,7 @@ def appengineVersion = "1.9.71"
 def jerseyVersion = "2.27"
 
 dependencies {
-    compile 'org.codehaus.groovy:groovy-all:2.4.15'
+    compile 'org.codehaus.groovy:groovy-all:2.5.4'
 
     compile "com.google.appengine:appengine-api-1.0-sdk:$appengineVersion"
 
