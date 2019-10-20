@@ -43,7 +43,7 @@ In the portal
 * Set up a service account through API Manager
 
 ## Google cloud project setup
-* Go to the Gcloud console console.cloud.google.come
+* Go to the Gcloud console console.cloud.google.com
 * Create a new project
 * Configure the subdomain and update DNS
 * Create project in github
