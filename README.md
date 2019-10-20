@@ -1,4 +1,11 @@
 # gcloud
+![Jenkins](https://img.shields.io/jenkins/build/http/trevorism-build.eastus.cloudapp.azure.com/gcloud)
+![Jenkins Coverage](https://img.shields.io/jenkins/coverage/jacoco/http/trevorism-build.eastus.cloudapp.azure.com/gcloud)
+![GitHub last commit](https://img.shields.io/github/last-commit/trevorism/gcloud)
+![GitHub language count](https://img.shields.io/github/languages/count/trevorism/gcloud)
+![GitHub top language](https://img.shields.io/github/languages/top/trevorism/gcloud)
+
+
 Template for google app engine services
 
 ##Prerequisites
@@ -39,7 +46,6 @@ In the portal
 * Go to the Gcloud console console.cloud.google.come
 * Create a new project
 * Configure the subdomain and update DNS
-* Update New-WebApi POSH script to generate a project
-* Update registry project to take into account new project
 * Create project in github
+* Update New-WebApi POSH script to generate a project
 * Start jenkins using click.trevorism.com
