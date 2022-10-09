@@ -97,7 +97,7 @@ task buildApp(type: NpmTask) {
 
 task testApp(type: NpmTask) {
     group = "npm"
-    args = ['test']
+    args = ['run', 'accept']
 }
 
 task runApp(type: NpmTask) {
@@ -109,4 +109,4 @@ war{
     from "src/app/dist"
 }
 
-war.dependsOn("buildApp")
+war.dependsOn("testApp", "buildApp")
