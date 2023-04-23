@@ -1,5 +1,12 @@
-import { createApp } from 'vue'
-import './style.css'
-import App from './App.vue'
+import { createApp } from "vue";
+import App from "./App.vue";
 
-createApp(App).mount('#app')
+import VueClickAway from "vue3-click-away";
+import { createVuestic } from 'vuestic-ui'
+import config from '../vuestic.config.js'
+import './style.css'
+
+const app = createApp(App)
+app.use(VueClickAway);
+app.use(createVuestic({config}));
+app.mount('#app')

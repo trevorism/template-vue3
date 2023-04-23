@@ -1,19 +1,13 @@
 import {defineConfig} from 'vite'
 import vue from '@vitejs/plugin-vue'
 
-// https://vitejs.dev/config/
 export default defineConfig({
     plugins: [vue()],
-    test: {
-        globals: true,
-        environment: "jsdom",
-    },
     server: {
+        host: "localhost",
         proxy: {
             '/api': {
-                target: 'http://localhost:8080/',
-                changeOrigin: true,
-                secure: false
+                target: 'http://127.0.0.1:8080/', changeOrigin: true, secure: false
             }
         }
     }

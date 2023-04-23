@@ -3,16 +3,22 @@ name: Deploy tested project to GCP
 on:
   push:
     branches: [ master ]
+  workflow_dispatch:
+
+permissions: write-all
 
 jobs:
   call-build:
     uses: trevorism/actions-workflows/.github/workflows/build.yml@master
+    with:
+      JDK_VERSION: 17
 
   call-deploy:
     uses: trevorism/actions-workflows/.github/workflows/deploy.yml@master
     if: success() || failure()
     needs: [call-build, call-accept-before]
     with:
+      JDK_VERSION: 17
       gcp_project: 'trevorism-gcloud'
       gcp_project_id: '159773244195'
       version: '0-0-1'
@@ -23,7 +29,11 @@ jobs:
 
   call-accept-before:
     uses: trevorism/actions-workflows/.github/workflows/accept.yml@master
+    with:
+      JDK_VERSION: 17
 
   call-accept-after:
     uses: trevorism/actions-workflows/.github/workflows/accept.yml@master
     needs: call-deploy
+    with:
+      JDK_VERSION: 17

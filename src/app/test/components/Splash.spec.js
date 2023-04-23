@@ -1,9 +1,9 @@
 import { mount } from "@vue/test-utils";
-import HelloWorld from "./src/components/HelloWorld.vue";
+import HelloWorld from "./src/components/Splash.vue";
 import { describe, it, expect, vi } from "vitest";
 
 
-describe("HelloWorld.vue", () => {
+describe("Splash.vue", () => {
 
     it("should renders is page content is correct", () => {
         const wrapper = mount(HelloWorld, {
