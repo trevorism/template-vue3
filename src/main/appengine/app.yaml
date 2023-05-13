@@ -1,3 +1,8 @@
 runtime: java17
 service: template-vue3
 entrypoint: java -jar template-vue3-all.jar
+handlers:
+  - url: /.*
+    secure: always
+    redirect_http_response_code: 301
+    script: auto
