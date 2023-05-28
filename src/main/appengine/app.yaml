@@ -1,6 +1,6 @@
 runtime: java17
-service: template-vue3
-entrypoint: java -jar template-vue3-all.jar
+service: dns
+entrypoint: java -jar dns-all.jar
 handlers:
   - url: /.*
     secure: always
