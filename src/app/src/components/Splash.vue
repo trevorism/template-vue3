@@ -31,8 +31,6 @@ defineProps({
 <template>
   <h1 class="grid justify-items-center">{{ msg }}</h1>
   <h1 class="grid justify-items-center">{{ val }}</h1>
-
-  <va-icon name="home" size="large" color="red"></va-icon>
 </template>
 
 <style scoped>
