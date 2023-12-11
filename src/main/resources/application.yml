@@ -1,6 +1,6 @@
 micronaut:
   application:
-    name: dns
+    name: template-vue3
   server:
     http-to-https-redirect: true
   security:

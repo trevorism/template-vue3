@@ -1,6 +1,5 @@
-package com.trevorism.gcloud
+package com.trevorism.controller
 
-import com.trevorism.controller.RootController
 import org.junit.jupiter.api.Test
 
 /**
@@ -11,7 +10,7 @@ class RootControllerTest {
     @Test
     void testRootControllerEndpoints(){
         RootController rootController = new RootController()
-        assert rootController.index().getBody().get().join(";").contains("/help")
+        assert rootController.index().getBody().get().contains("/help")
     }
 
     @Test
