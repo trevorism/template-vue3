@@ -7,7 +7,6 @@
   "type": "module",
   "scripts": {
     "build": "vite build",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path",
     "accept": "vitest run",
     "dev": "vite",
     "preview": "vite preview",
