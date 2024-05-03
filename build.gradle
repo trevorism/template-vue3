@@ -24,7 +24,7 @@ buildscript {
 plugins {
     id("groovy")
     id("com.github.johnrengelman.shadow") version "8.1.1"
-    id("io.micronaut.application") version "4.3.5"
+    id("io.micronaut.application") version "4.3.8"
     id("com.github.node-gradle.node") version "7.0.2"
     id("jacoco")
 }
@@ -51,7 +51,7 @@ dependencies {
     runtimeOnly("org.yaml:snakeyaml")
 
     implementation("jakarta.annotation:jakarta.annotation-api")
-    implementation 'io.projectreactor:reactor-core:3.6.4'
+    implementation 'io.projectreactor:reactor-core:3.6.5'
 
     implementation("io.swagger.core.v3:swagger-annotations")
     compileOnly("io.micronaut.openapi:micronaut-openapi"){
@@ -59,8 +59,6 @@ dependencies {
     }
 
     runtimeOnly("ch.qos.logback:logback-classic")
-    implementation 'org.slf4j:slf4j-simple:2.0.12'
-
     acceptanceImplementation 'io.cucumber:cucumber-groovy:6.10.4'
 }
 
