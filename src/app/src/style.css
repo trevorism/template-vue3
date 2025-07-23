@@ -1,3 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+@layer base {
+    body {
+        font-family: var(--va-font-family, "ui-sans-serif", system-ui, "Segoe UI Semibold");
+    }
+}
+
+.va-navbar.header {
+    --va-font-family: "ui-sans-serif", system-ui, "Segoe UI Semibold";
+    --va-navbar-padding-y: 0px;
+    --va-navbar-padding-x: 12px;
+}
+
+.va-navbar__right {
+    margin-right: 30px;
+}

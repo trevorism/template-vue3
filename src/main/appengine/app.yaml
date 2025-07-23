@@ -1,4 +1,4 @@
-runtime: java17
+runtime: java21
 service: template-vue3
 entrypoint: java -jar template-vue3-all.jar
 handlers:
