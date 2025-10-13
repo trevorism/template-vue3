@@ -22,16 +22,19 @@ export default {
 </script>
 
 <script setup>
+import { VaIcon } from 'vuestic-ui'
+
 defineProps({
   msg: String
 })
 </script>
 
 <template>
-  <h1 class="grid justify-items-center">{{ msg }}</h1>
-  <h1 class="grid justify-items-center">{{ val }}</h1>
-
-  <va-icon class="grid justify-items-center" name="home" size="large" color="red"></va-icon>
+  <div class="grid justify-items-center">
+    <h1>{{ msg }}</h1>
+    <h1>{{ val }}</h1>
+    <va-icon name="home" size="large" color="red-400"></va-icon>
+  </div>
 </template>
 
 <style scoped></style>
