@@ -10,7 +10,8 @@ import org.junit.jupiter.api.Test
 class CacheControlFilterTest {
 
     private static final String IMMUTABLE = "public, max-age=31536000, immutable"
-    private static final String NO_STORE = "no-store, no-cache, must-revalidate"
+    private static final String NO_CACHE = "no-cache, must-revalidate"
+    private static final String NO_STORE = "no-store"
 
     private final CacheControlFilter filter = new CacheControlFilter()
 
@@ -36,26 +37,23 @@ class CacheControlFilterTest {
     }
 
     @Test
-    void testHtmlRequestGetsNoStoreCacheControl() {
+    void testHtmlRequestGetsNoCacheCacheControl() {
         HttpRequest<?> request = HttpRequest.GET("/some/spa/route").accept(MediaType.TEXT_HTML)
         MutableHttpResponse<?> response = HttpResponse.ok()
 
         filter.applyCacheControl(request, response)
 
-        assert response.getHeaders().get(HttpHeaders.CACHE_CONTROL) == NO_STORE
+        assert response.getHeaders().get(HttpHeaders.CACHE_CONTROL) == NO_CACHE
     }
 
     @Test
-    void testHtmlRequestRemovesLastModifiedAndEtag() {
-        HttpRequest<?> request = HttpRequest.GET("/").accept(MediaType.TEXT_HTML)
-        MutableHttpResponse<?> response = HttpResponse.ok()
-        response.getHeaders().add(HttpHeaders.LAST_MODIFIED, "Wed, 21 Oct 2015 07:28:00 GMT")
-        response.getHeaders().add(HttpHeaders.ETAG, "\"abc123\"")
+    void testFailedAssetRequestGetsNoStoreCacheControl() {
+        HttpRequest<?> request = HttpRequest.GET("/assets/missing.js")
+        MutableHttpResponse<?> response = HttpResponse.notFound()
 
         filter.applyCacheControl(request, response)
 
-        assert response.getHeaders().get(HttpHeaders.LAST_MODIFIED) == null
-        assert response.getHeaders().get(HttpHeaders.ETAG) == null
+        assert response.getHeaders().get(HttpHeaders.CACHE_CONTROL) == NO_STORE
     }
 
     @Test

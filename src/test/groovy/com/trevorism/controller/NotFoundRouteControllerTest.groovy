@@ -25,7 +25,7 @@ class NotFoundRouteControllerTest {
     }
 
     @Test
-    void testForwardReturnsNullWhenHtmlNotAccepted() {
+    void testForwardReturnsNotFoundWhenHtmlNotAccepted() {
         NotFoundRouteController controller = new NotFoundRouteController(
                 resourceResolver: [getResource: { String path -> Optional.empty() }] as ResourceResolver)
 
@@ -33,6 +33,42 @@ class NotFoundRouteControllerTest {
 
         HttpResponse response = controller.forward(request)
 
-        assert response == null
+        assert response.status() == HttpStatus.NOT_FOUND
+    }
+
+    @Test
+    void testForwardReturnsNotFoundForAssetPath() {
+        NotFoundRouteController controller = new NotFoundRouteController(
+                resourceResolver: [getResource: { String path -> Optional.empty() }] as ResourceResolver)
+
+        HttpRequest request = HttpRequest.GET("/assets/missing.js").accept(MediaType.TEXT_HTML)
+
+        HttpResponse response = controller.forward(request)
+
+        assert response.status() == HttpStatus.NOT_FOUND
+    }
+
+    @Test
+    void testForwardReturnsNotFoundForApiPath() {
+        NotFoundRouteController controller = new NotFoundRouteController(
+                resourceResolver: [getResource: { String path -> Optional.empty() }] as ResourceResolver)
+
+        HttpRequest request = HttpRequest.GET("/api/missing").accept(MediaType.TEXT_HTML)
+
+        HttpResponse response = controller.forward(request)
+
+        assert response.status() == HttpStatus.NOT_FOUND
+    }
+
+    @Test
+    void testForwardReturnsNotFoundForPathWithFileExtension() {
+        NotFoundRouteController controller = new NotFoundRouteController(
+                resourceResolver: [getResource: { String path -> Optional.empty() }] as ResourceResolver)
+
+        HttpRequest request = HttpRequest.GET("/favicon.ico").accept(MediaType.TEXT_HTML)
+
+        HttpResponse response = controller.forward(request)
+
+        assert response.status() == HttpStatus.NOT_FOUND
     }
 }
