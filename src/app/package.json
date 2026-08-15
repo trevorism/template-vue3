@@ -16,7 +16,7 @@
    },
    "dependencies": {
       "@tailwindcss/vite": "^4.3.3",
-      "vue": "^3.5.40",
+      "vue": "^3.5.41",
       "vue-router": "^5.2.0",
       "vue3-click-away": "^1.2.4",
       "vuestic-ui": "^1.10.3"
@@ -30,13 +30,13 @@
       "@vue/test-utils": "^2.4.11",
       "autoprefixer": "^10.5.4",
       "axios": "^1.19.0",
-      "cypress": "^15.19.0",
-      "eslint": "^10.8.0",
+      "cypress": "^15.20.1",
+      "eslint": "^10.8.1",
       "eslint-plugin-vue": "^10.10.0",
       "jsdom": "^30.0.1",
       "prettier": "^3.9.6",
       "tailwindcss": "^4.3.3",
-      "vite": "^8.2.0",
+      "vite": "^8.2.1",
       "vitest": "^4.1.10",
       "vue-cli-plugin-vuestic-ui": "~1.0.11",
       "vue-eslint-parser": "^10.4.1",
@@ -44,6 +44,6 @@
    },
    "allowScripts": {
       "vue-demi@0.14.10": true,
-      "cypress@15.19.0": true
+      "cypress@15.20.1": true
    }
 }
